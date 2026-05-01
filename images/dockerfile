@@ -1,16 +1,5 @@
-# Create dockerfile i cmd: type nul > Dockerfile 
-
-
 FROM docker.io/bitnami/nginx:latest 
-#vanliga nginx imagen fungerar ej för K8S, bitnami körs utan ROOT 
-
-#Work directory som serverar frontend/webbsidan/statiska filer direkt i port 8080
 
 COPY HTML/ /app/
-# Betyder “kopiera allt från build-context till /usr/share/nginx/html" Så allt i HTML mappen kopieras till container
-# vill ej kopiera gitignore-filen pga säkerhet 
 
-#RUN mkdir -p /var/cache/nginx/client_temp && chmod 777 /var/cache/nginx/client_temp  Denna raden behövs vid användning av vanliga nginx imagen pga KÖR SOM ROOT
-
-# Expose nginx port 
 EXPOSE 8080
