@@ -9,6 +9,7 @@ Terraform configuration for deploying my portfolio web app on Azure using Docker
 
 ## Prerequisites
 
+- WSL (Windows Subsystem for Linux) with Ubuntu
 - Terraform installed
 - Azure CLI installed and logged in (`az login`)
 - Docker Hub account with a pushed image
