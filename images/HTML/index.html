@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Welcome to my portfolio</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <nav id="hamburger-nav">
+      <div class="logo">Welcome to my Portfolio</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/profile-pic.png" alt="Karolin profilepic" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hi, I'm</p>
+        <h1 class="title"><span class="pink-text">Karolin Nguyen</span></h1>
+        <p class="section__text__p2">.NET Cloud Developer </p>
+        <div class="btn-container">
+          <button class="btn btn-color-2" onclick="window.open('./assets/Karolin_CV.pdf')">Download CV</button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
+        </div>
+        <div id="socials-container">
+          <img src="./assets/linkedin.png" alt="Karolins linkedin" class="icon" onclick="location.href='https://www.linkedin.com/in/karolin-nguyen-bb5021318'" />
+          <img src="./assets/github.png" alt="Karolins github" class="icon" onclick="location.href='https://github.com/kaaarolin'" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img src="./assets/profilepic2.jpeg" alt="about picture" class="about-pic" />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img src="./assets/experience.png" alt="experience icon" class="icon" />
+              <h3>Experience</h3>
+              <p> ● Internship at Göteborgs Spårvägar (Feb 2026 -) </p>
+              <p> ● Internship at Ultranous (Jan 2026 - Feb 2026) </p>
+              <p> ● Internship at Miss Prym (Sep 2025 - Nov 2025) </p>
+              <p> ● Board member of Brf Futura Lindholmen (June 2025 - ) </p>
+              <p> ● 4+ years of pharmacy at Apoteket AB (2020 - )</p>
+              <p> ● Pharmacy Technician at Apoteket AB (2019 - 2020)</p>
+              <p> ● Pharmacy Technician at Apotek Hjärtat (2018 - 2019) </p>
+              <p> ● Mcdonalds Halmstad Hallarna (2015 - 2016)</p>
+            </div>
+            <div class="details-container">
+              <img src="./assets/education.png" alt="education icon" class="icon" />
+              <h3>Education</h3>
+              <p> ● .NET Cloud, IT-Högskolan (2024 - )</p>
+              <p> ● B.Sc. in Pharmacy, University of Gothenburg (2016 - 2019) </p>
+              <p> ● Japanese 1, Dalarna University (2018) </p>
+              <p> ● English 1-30, University of Gävle (2017 - 2018) </p>
+              <p> ● High school Diploma - Science, Kattegattgymnasiet</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p> After spending more than 4 years as a pharmacist I've decided to pursue a totally different field - tech! 
+              It is with great humility and curiosity I now take off on a new exciting journey. After more than one year at IT-Högskolan I've realized 
+              there's so much more to learn and I can't wait to explore different coding languages and technologies that can help me grow as a developer.
+              <br>
+              <br>
+              In my free time, I love going to the gym, play padel, cook, read, and photographing with my Fujifilm camera. 
+              Travelling is a big passion of mine – 
+              as is learning new languages. I'm currently diving into 3D design and visualization using Blender alongside my 
+              coding journey and on top of that trying to learn french. 
+              Who knows what my next pursuit will be!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Frontend Development</h2>
+            <div class="article-container">
+              <article><img src="assets/checkmark.png" class="icon" /><h3>HTML</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>CSS</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>JavaScript</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Blazor</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>React</h3></article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Backend Development</h2>
+            <div class="article-container">
+              <article><img src="assets/checkmark.png" class="icon" /><h3>C#</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>SQL</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>MongoDB</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Python</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Azure
+                <h3><img src="assets/images.png" class="MS_icon"/></h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Azure DevOps</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>CI/CD</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Git</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>NodeJS</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Docker</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Bicep</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Open Shift</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Helm</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Kubernetes</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Grafana</h3></article>
+              <article><img src="assets/checkmark.png" class="icon" /><h3>Clickhouse</h3></article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="section__text__p1">Check Out My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="assets/animelist.png" alt="project 1" class="project-img" />
+              <h2 class="experience-sub-title project-title">Anime list</h2>
+              <p> An anime list with AniList API where you can favorite your anime and view it in a favorite list. Made in React and published on
+                Netlify. </p>
+              <div class="btn-container">
+                <button class="btn btn-color-2 project-btn" onclick="location.href='https://karolinsanimelist.netlify.app'">Link</button>
+                <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/kaaarolin/Anime-list'">Github</button>
+              </div>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="assets/project1.jpg" alt="project 2" class="project-img" />
+              <h2 class="experience-sub-title project-title">CV Made in Blazor</h2>
+              <p>A portfolio website built with Blazor, featuring an API connected to a SQL database and an admin 
+                page for updating and editing tech skills and project tables. Previously deployed on Azure. </p>
+              <div class="btn-container">
+                <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/kaaarolin/CV_Blazor2'">Github</button>
+              </div>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="assets/project2.png" alt="project 3" class="project-img" />
+              <h2 class="experience-sub-title project-title">Rock Paper Scissors Game</h2>
+              <p>This was one of my very first Visual Studio projects. It began as a basic number game against the computer,
+                 but quickly turned into a fun Rock, Paper, Scissors game! Are you up for the challenge? Best of three wins!</p>
+              <div class="btn-container">
+                <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/kaaarolin/Rock-Paper-Scissors-Game'">Github</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-container">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+          <input type="hidden" name="access_key" value="374d8e4d-c4d2-4d13-ad5b-a41fda16ef8d" />
+          <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required />
+          <input type="email" name="email" placeholder="Your E-mail" class="contact-inputs" required />
+          <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+          <button type="submit">
+            Submit
+            <img src="assets/arrow_icon.png" alt="arrow icon" />
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
