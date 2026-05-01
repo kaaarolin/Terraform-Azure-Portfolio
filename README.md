@@ -1,6 +1,6 @@
 # Terraform Azure Portfolio
 
-Terraform-konfiguration för att driftsätta en portfoliowebbapp i Azure med Docker.
+Terraform-konfiguration för att driftsätta min portfolio i en webbapp i Azure med Docker.
 
 ## Infrastruktur
 
