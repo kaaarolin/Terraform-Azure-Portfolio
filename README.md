@@ -1,36 +1,36 @@
 # Terraform Azure Portfolio
 
-Terraform-konfiguration för att driftsätta min portfolio i en webbapp i Azure med Docker.
+Terraform configuration for deploying my portfolio web app on Azure using Docker and nginx image.
 
-## Infrastruktur
+## Infrastructure
 
 - Azure App Service Plan (Linux, B1)
-- Azure Linux Web App med Docker-container från Docker Hub
+- Azure Linux Web App running a Docker container from Docker Hub
 
-## Förutsättningar
+## Prerequisites
 
-- Terraform installerat
-- Azure CLI installerat och inloggad (`az login`)
-- Docker Hub-konto med pushad image
+- Terraform installed
+- Azure CLI installed and logged in (`az login`)
+- Docker Hub account with a pushed image
 
-## Användning
+## Usage
 
-1. Klona repot
-2. Kopiera och fyll i variablerna:
+1. Clone the repository
+2. Copy and fill in the variables:
 ```bash
    cp terraform.tfvars.example terraform.tfvars
 ```
-3. Initiera Terraform:
+3. Initialize Terraform:
 ```bash
    terraform init
 ```
-4. Planera och applicera:
+4. Plan and apply:
 ```bash
    terraform plan
    terraform apply
 ```
 
-## Ta bort infrastrukturen
+## Destroy infrastructure
 
 ```bash
 terraform destroy
