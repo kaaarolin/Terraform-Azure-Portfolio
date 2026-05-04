@@ -16,6 +16,7 @@ The script creates `main.tf`, `variables.tf`, `terraform.tfvars` and `outputs.tf
 
 - Azure App Service Plan (Linux, B1)
 - Azure Linux Web App running a Docker container from Docker Hub
+- Application Insights for monitoring 
 
 ## Prerequisites
 
