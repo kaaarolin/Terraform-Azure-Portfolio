@@ -43,3 +43,19 @@ resource "azurerm_linux_web_app" "app" {
     "WEBSITES_PORT" = "8080"
   }
 }
+
+resource "azurerm_application_insights" "app-insights" {
+  name = "portfolio-app-insights" 
+  location = var.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+  application_type = "web" 
+}
+
+output "instrumentation_key" {
+  value = azurerm_application_insights.app-insights.instrumentation_key
+  # sensitive = true 
+}
+
+output "instrumentation_key" {
+  value = azurerm_application_insights.app-insights.app_id
+}
