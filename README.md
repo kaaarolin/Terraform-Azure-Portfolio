@@ -1,6 +1,6 @@
 # Terraform Azure Portfolio
 
-Terraform configuration for deploying my portfolio web app on Azure using Docker and nginx, with Application Insights for client-side monitoring and Azure Monitor alerts.
+Terraform configuration for deploying my portfolio web app on Azure using Docker and nginx, with Application Insights for client-side monitoring, Azure Monitor Autoscale for automatic scaling based on CPU usage.
 
 ## Project Setup
 
@@ -19,6 +19,7 @@ The script creates `main.tf`, `variables.tf`, `terraform.tfvars` and `outputs.tf
 - Log Analytics Workspace
 - Application Insights for client-side monitoring
 - Azure Monitor Alerts for page view notifications
+- Azure Monitor Autoscale 
 
 ## Monitoring
 
@@ -32,6 +33,12 @@ Tracks:
 ## Alerts
 
 Azure Monitor Metric Alert is configured to trigger when page views exceed 10 within 5 minutes, sending an email notification.
+
+## Autoscaling
+
+Azure Monitor Autoscale is configured to scale up by 1 instance when CPU exceeds 50% over a 5 minute window, with a maximum of 3 instances. Sends email notification when triggered. 
+
+> Note: For a static nginx portfolio, CPU-based autoscaling will rarely trigger in practice as nginx handles static files with minimal CPU usage. 
 
 ## Prerequisites
 
