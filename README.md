@@ -1,6 +1,6 @@
 # Terraform Azure Portfolio
 
-Terraform configuration for deploying my portfolio web app on Azure using Docker and nginx image.
+Terraform configuration for deploying my portfolio web app on Azure using Docker and nginx, with Application Insights for client-side monitoring and Azure Monitor alerts.
 
 ## Project Setup
 
@@ -16,7 +16,9 @@ The script creates `main.tf`, `variables.tf`, `terraform.tfvars` and `outputs.tf
 
 - Azure App Service Plan (Linux, B1)
 - Azure Linux Web App running a Docker container from Docker Hub
-- Application Insights for monitoring
+- Log Analytics Workspace
+- Application Insights for client-side monitoring
+- Azure Monitor Alerts for page view notifications
 
 ## Monitoring
 
@@ -26,6 +28,10 @@ Tracks:
 - Page views
 - JavaScript errors
 - Page load performance
+
+## Alerts
+
+Azure Monitor Metric Alert is configured to trigger when page views exceed 10 within 5 minutes, sending an email notification.
 
 ## Prerequisites
 
