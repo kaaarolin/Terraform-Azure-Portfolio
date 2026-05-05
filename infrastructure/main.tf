@@ -41,6 +41,8 @@ resource "azurerm_linux_web_app" "app" {
 
   app_settings = {
     "WEBSITES_PORT" = "8080"
+    "APPINSIGHTS_INSTRUMENTATIONKEY"   = azurerm_application_insights.app-insights.instrumentation_key
+    "APPLICATIONINSIGHTS_CONNECTION_STRING" = azurerm_application_insights.app-insights.connection_string
   }
 }
 
@@ -64,7 +66,7 @@ resource "azurerm_application_insights" "app-insights" {
 
 output "instrumentation_key" {
   value = azurerm_application_insights.app-insights.instrumentation_key
-  # sensitive = true 
+  sensitive = true 
 }
 
 output "app_id" {
