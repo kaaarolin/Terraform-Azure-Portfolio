@@ -2,10 +2,21 @@
 
 Terraform configuration for deploying my portfolio web app on Azure using Docker and nginx image.
 
+## Project Setup
+
+Terraform project files were generated using a custom bash script:
+
+```bash
+create-terraform.sh project-name
+```
+
+The script creates `main.tf`, `variables.tf`, `terraform.tfvars` and `outputs.tf` automatically.
+
 ## Infrastructure
 
 - Azure App Service Plan (Linux, B1)
 - Azure Linux Web App running a Docker container from Docker Hub
+- Application Insights for monitoring 
 
 ## Prerequisites
 
