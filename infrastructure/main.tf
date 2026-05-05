@@ -64,6 +64,32 @@ resource "azurerm_application_insights" "app-insights" {
   tags = var.tags
 }
 
+resource "azurerm_monitor_metric_alert" "portfolio-alert" {
+  name = "portfolio-metricalert" 
+  resource_group_name = data.azurerm_resource_group.rg.name
+  scopes = [azurerm_application_insights.app-insights.id]
+
+  criteria {
+    metric_namespace = "microsoft.insights/components"
+    metric_name = "pageViews/count"
+    aggregation = "Total" 
+    operator = "GreaterThan"
+    threshold = 10
+
+  }
+}
+
+resource "azurerm_monitor_action_group" "pageviews-action" {
+  resource_group_name = data.azurerm_resource_group.rg.name
+  name = "send-email-actiongroup"
+  short_name = "send-email" 
+
+  azure_app_push_receiver {
+    name = "email-push" 
+    email_address = "karolin_57@hotmail.com"
+  }
+}
+
 output "instrumentation_key" {
   value = azurerm_application_insights.app-insights.instrumentation_key
   sensitive = true 
@@ -71,4 +97,8 @@ output "instrumentation_key" {
 
 output "app_id" {
   value = azurerm_application_insights.app-insights.app_id
+}
+
+output "action_group_id" {
+  value = azurerm_monitor_action_group.pageviews-action.id
 }
