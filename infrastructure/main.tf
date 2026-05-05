@@ -23,6 +23,7 @@ resource "azurerm_service_plan" "plan" {
   resource_group_name = data.azurerm_resource_group.rg.name
   os_type = "Linux" 
   sku_name = "B1" 
+  tags = var.tags
 
 }
 
@@ -68,6 +69,7 @@ resource "azurerm_monitor_metric_alert" "portfolio-alert" {
   name = "portfolio-metricalert" 
   resource_group_name = data.azurerm_resource_group.rg.name
   scopes = [azurerm_application_insights.app-insights.id]
+  tags = var.tags
 
   criteria {
     metric_namespace = "microsoft.insights/components"
@@ -83,10 +85,55 @@ resource "azurerm_monitor_action_group" "pageviews-action" {
   resource_group_name = data.azurerm_resource_group.rg.name
   name = "send-email-actiongroup"
   short_name = "send-email" 
+  tags = var.tags
 
   azure_app_push_receiver {
     name = "email-push" 
     email_address = "karolin_57@hotmail.com"
+  }
+}
+
+resource "azurerm_monitor_autoscale_setting" "autoscale" {
+  name = "portfolio-autoscale" 
+  enabled = true 
+  resource_group_name = data.azurerm_resource_group.rg.name
+  location = var.location 
+  target_resource_id = azurerm_service_plan.plan.id
+  tags = var.tags
+
+  profile {
+    name = "karolins-profile"
+
+    capacity {
+      default = 1
+      minimum = 1
+      maximum = 2
+    }
+
+    rule {
+      metric_trigger {
+        metric_name = "CpuPercentage"
+        metric_resource_id = azurerm_service_plan.plan.id
+        time_grain = "PT1M"
+        statistic = "Average"
+        time_window = "PT5M"
+        time_aggregation = "Average"
+        operator = "GreaterThan"
+        threshold = 50
+      }
+
+      scale_action {
+        direction = "Increase"
+        type = "ChangeCount" 
+        value = "1"
+        cooldown = "PT1M" 
+      }
+    }
+  }
+  notification {
+    email {
+      custom_emails = ["karolin_57@hotmail.com"]
+    }
   }
 }
 
