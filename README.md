@@ -16,7 +16,16 @@ The script creates `main.tf`, `variables.tf`, `terraform.tfvars` and `outputs.tf
 
 - Azure App Service Plan (Linux, B1)
 - Azure Linux Web App running a Docker container from Docker Hub
-- Application Insights for monitoring 
+- Application Insights for monitoring
+
+## Monitoring
+
+Application Insights is configured for client-side monitoring using the JavaScript SDK.
+
+Tracks:
+- Page views
+- JavaScript errors
+- Page load performance
 
 ## Prerequisites
 
