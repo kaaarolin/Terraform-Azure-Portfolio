@@ -22,6 +22,8 @@ The script creates `main.tf`, `variables.tf`, `terraform.tfvars` and `outputs.tf
 - Azure Monitor Autoscale 
 - Azure Key Vault for secret management
 
+![App Insights](screenshots/portfolio-terraform.png)
+
 ## Monitoring
 
 Application Insights is configured for client-side monitoring using the JavaScript SDK.
