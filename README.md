@@ -31,6 +31,8 @@ Tracks:
 - JavaScript errors
 - Page load performance
 
+![App Insights](screenshots/app-insights.png)
+
 ## Alerts
 
 Azure Monitor Metric Alert is configured to trigger when page views exceed 10 within 5 minutes, sending an email notification.
