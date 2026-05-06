@@ -18,8 +18,9 @@ The script creates `main.tf`, `variables.tf`, `terraform.tfvars` and `outputs.tf
 - Azure Linux Web App running a Docker container from Docker Hub
 - Log Analytics Workspace
 - Application Insights for client-side monitoring
-- Azure Monitor Alerts for page view notifications
+- Azure Monitor Metric Alert for page view notifications
 - Azure Monitor Autoscale 
+- Azure Key Vault for secret management
 
 ## Monitoring
 
@@ -36,7 +37,7 @@ Azure Monitor Metric Alert is configured to trigger when page views exceed 10 wi
 
 ## Autoscaling
 
-Azure Monitor Autoscale is configured to scale up by 1 instance when CPU exceeds 50% over a 5 minute window, with a maximum of 3 instances. Sends email notification when triggered. 
+Azure Monitor Autoscale is configured to scale up by 1 instance when CPU exceeds 50% over a 5 minute window, with a maximum of 2 instances. Sends email notification when triggered. 
 
 > Note: For a static nginx portfolio, CPU-based autoscaling will rarely trigger in practice as nginx handles static files with minimal CPU usage. 
 
