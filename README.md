@@ -43,7 +43,7 @@ Azure Monitor Autoscale is configured to scale up by 1 instance when CPU exceeds
 
 ## Security
 
-Azure Key Vault is used to store the Application Insights instrumentation key securely.
+Azure Key Vault is used to store the Application Insights instrumentation key securely. Access is managed via system-assigned managed identity, eliminating the need for hardcoded credentials.
 
 ## Prerequisites
 
