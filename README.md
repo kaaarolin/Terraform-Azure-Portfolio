@@ -1,6 +1,6 @@
 # Terraform Azure Portfolio
 
-Terraform configuration for deploying my portfolio web app on Azure using Docker and nginx, with Application Insights for client-side monitoring, Azure Monitor Autoscale for automatic scaling based on CPU usage, and Azure Key Vault for secret management.
+Terraform configuration for deploying my portfolio web app on Azure using Docker and nginx, with Application Insights for client-side monitoring, Azure Monitor for alerts and autoscaling, and Azure Key Vault for secret management.
 
 ## Project Setup
 
