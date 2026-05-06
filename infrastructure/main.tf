@@ -17,6 +17,8 @@ data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
 
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_service_plan" "plan" {
   name = "portfolio-serviceplan"
   location = var.location
@@ -34,6 +36,11 @@ resource "azurerm_linux_web_app" "app" {
   service_plan_id = azurerm_service_plan.plan.id
   tags = var.tags
 
+  identity {
+    type = "SystemAssigned"
+  }
+  
+
   site_config {
     application_stack {
         docker_image_name = var.docker_image
@@ -42,7 +49,7 @@ resource "azurerm_linux_web_app" "app" {
 
   app_settings = {
     "WEBSITES_PORT" = "8080"
-    "APPINSIGHTS_INSTRUMENTATIONKEY"   = azurerm_application_insights.app-insights.instrumentation_key
+    "APPINSIGHTS_INSTRUMENTATIONKEY"   = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.instrumentation-key.id})"
     "APPLICATIONINSIGHTS_CONNECTION_STRING" = azurerm_application_insights.app-insights.connection_string
   }
 }
@@ -137,9 +144,55 @@ resource "azurerm_monitor_autoscale_setting" "autoscale" {
   }
 }
 
-output "instrumentation_key" {
-  value = azurerm_application_insights.app-insights.instrumentation_key
-  sensitive = true 
+#Key vault 
+
+resource "azurerm_key_vault" "keyvault" {
+  name = "karolins-portfolio-kv" 
+  location = var.location 
+  resource_group_name = data.azurerm_resource_group.rg.name
+  tenant_id = data.azurerm_client_config.current.tenant_id
+  soft_delete_retention_days = 7
+  sku_name = "standard" 
+  tags = var.tags
+}
+
+resource "azurerm_key_vault_access_policy" "access-policy" {
+  key_vault_id = azurerm_key_vault.keyvault.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = data.azurerm_client_config.current.object_id
+
+  key_permissions = [
+    "Get",
+  ]
+
+  secret_permissions = [
+    "Get",
+    "List",
+    "Set",
+    "Delete",
+    "Purge",
+  ]
+}
+
+resource "azurerm_key_vault_access_policy" "system-identity-access" {
+  key_vault_id = azurerm_key_vault.keyvault.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_linux_web_app.app.identity[0].principal_id
+
+  secret_permissions = [
+    "Get",
+    "List",
+  ]
+
+  depends_on = [azurerm_linux_web_app.app]
+}
+
+resource "azurerm_key_vault_secret" "instrumentation-key" {
+  name         = "instrumentation-key"
+  value        = azurerm_application_insights.app-insights.instrumentation_key
+  key_vault_id = azurerm_key_vault.keyvault.id
+
+  depends_on = [azurerm_key_vault_access_policy.access-policy]
 }
 
 output "app_id" {
